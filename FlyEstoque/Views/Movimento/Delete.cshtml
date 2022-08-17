@@ -1,0 +1,68 @@
+﻿@model FlyEstoque.Models.Movimento
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="container-fluid px-4">
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Início</a></li>
+        <li class="breadcrumb-item">Movimento</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Movimento" asp-action="Index">Movimentos</a></li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <b>Estorno de Movimento</b>
+        </div>
+        <div class="card-body">
+            <p>Deseja realmente realizar o estorno deste movimento?</p>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        Data e hora
+                        <input readonly="" asp-for="DtMovimento" class="form-control" />
+                        <span asp-validation-for="DtMovimento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        Quantidade
+                        <input readonly="" asp-for="Quantidade" class="form-control" />
+                        <span asp-validation-for="Quantidade" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-group">
+                            Produto
+                            <input type="hidden" asp-for="ProdutoId" class="form-control" />
+                            <input readonly="" value="@ViewBag.ProdutoCodigo" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            Descrição
+                            <input readonly="" class="form-control" value="@ViewBag.ProdutoDesc">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            Tipo do Movimento
+                            <select disabled="" asp-for="TipoMovimento" class="form-control" asp-items="Html.GetEnumSelectList<TipoMovimento>()"></select>
+                            <select style="display:none;" asp-for="TipoMovimento" class="form-control" asp-items="Html.GetEnumSelectList<TipoMovimento>()"></select>
+                            <span asp-validation-for="TipoMovimento" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div style="text-align: center;">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Estornar" class="btn btn-danger" />
+                    <a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

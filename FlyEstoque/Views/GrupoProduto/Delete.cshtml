@@ -1,0 +1,49 @@
+﻿@model FlyEstoque.Models.GrupoProduto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="container-fluid px-4">
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Início</a></li>
+        <li class="breadcrumb-item">Cadastro</a></li>
+        <li class="breadcrumb-item"><a asp-controller="GrupoProduto" asp-action="Index">Produto</a></li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <b>Cadastrar Novo Produto</b>
+        </div>
+        <div class="card-body">
+            <p>Deseja realmente excluir este grupo de produto do sistema ?</p>
+            <div class="row">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-1">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            Código
+                            <input readonly="" asp-for="Codigo" class="form-control" />
+                            <span asp-validation-for="Codigo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-11">
+                        <div class="form-group">
+                            Descrição
+                            <input readonly="" asp-for="Descricao" class="form-control" />
+                            <span asp-validation-for="Descricao" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <form asp-action="Delete">
+                <div style="text-align: center;">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Excluir" class="btn btn-danger" />
+                    <a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

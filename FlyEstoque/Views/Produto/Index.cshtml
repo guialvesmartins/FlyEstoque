@@ -1,0 +1,84 @@
+﻿@model IEnumerable<FlyEstoque.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container-fluid px-4">
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Início</a></li>
+        <li class="breadcrumb-item">Cadastro</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Produto" asp-action="Index">Produto</a></li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <b>Cadastro de Produto</b>
+        </div>
+        <div class="card-body">
+
+            <p>
+                <a autofocus class="btn btn-primary" asp-action="Create">Incluir Novo</a>
+            </p>
+
+            <table class="table" id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>
+                            Código
+                        </th>
+                        <th>
+                            Descrição
+                        </th>
+                        <th>
+                            Cód. Barras
+                        </th>
+                        <th>
+                            Saldo
+                        </th>
+                        <th>
+                            Grupo
+                        </th>
+                        <th>
+                            Ações
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Codigo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodBarras)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SaldoAtual)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GrupoProduto.Codigo)
+                            </td>
+                            <td>
+                                <div style="text-align: center">
+                                    <a class="btn-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-bars"></i></a> |
+                                    <a class="btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash-alt"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

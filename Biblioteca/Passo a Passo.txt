@@ -1,0 +1,5 @@
+1 - Criar os modelos,
+2 - Criar Contexto,
+3 - Configurar Startup:
+	ConfigureServices;
+		-services.AddDbContext<Contexto>();

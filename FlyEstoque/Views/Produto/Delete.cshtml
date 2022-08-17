@@ -1,0 +1,94 @@
+﻿@model FlyEstoque.Models.Produto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container-fluid px-4">
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Início</a></li>
+        <li class="breadcrumb-item">Cadastro</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Produto" asp-action="Index">Produto</a></li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <b>Exclusão de Produto</b>
+        </div>
+        <div class="card-body">
+            <p>Deseja Realmente excluir este Produto?</p>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        Grupo
+                        <select disabled="" asp-for="GrupoProdutoId" class="form-control" asp-items="ViewBag.GrupoProdutoId"></select>
+                        <span asp-validation-for="GrupoProdutoId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        Código
+                        <input disabled="" asp-for="Codigo" class="form-control" />
+                        <span asp-validation-for="Codigo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        Descrição
+                        <input asp-for="Descricao" class="form-control" />
+                        <span asp-validation-for="Descricao" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        Código de barras
+                        <input asp-for="CodBarras" class="form-control" />
+                        <span asp-validation-for="CodBarras" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        Estoque Máximo
+                        <input asp-for="EstoqueMax" class="form-control" />
+                        <span asp-validation-for="EstoqueMax" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        Estoque Mínimo
+                        <input asp-for="EstoqueMin" class="form-control" />
+                        <span asp-validation-for="EstoqueMin" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        Saldo
+                        <input disabled="" asp-for="SaldoAtual" class="form-control" />
+                        <span asp-validation-for="SaldoAtual" class="text-danger"></span>
+                    </div>
+
+                </div>
+            </div>
+
+            <br />
+
+            <form asp-action="Delete">
+                <div style="text-align: center;">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" class="btn btn-danger" value="Excluir" />
+                    <a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
